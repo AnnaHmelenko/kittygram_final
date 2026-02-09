@@ -1,0 +1,40 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres:13
+    env_file:
+      - .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
+
+  backend:
+    image: khmee/kittygram_backend
+    env_file:
+      - .env
+    volumes:
+      - static:/app/static/
+      - media:/app/media/
+    depends_on:
+      - db
+
+  frontend:
+    image: khmee/kittygram_frontend
+    volumes:
+      - static:/app/build/
+
+  gateway:
+    image: khmee/kittygram_gateway
+    ports:
+      - "9000:80"
+    volumes:
+      - static:/static/
+      - media:/media/
+    depends_on:
+      - backend
+      - frontend
+
+volumes:
+  static:
+  media:
+  pg_data:
