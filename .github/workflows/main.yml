@@ -133,3 +133,13 @@ jobs:
             docker-compose -f docker-compose.production.yml exec -T backend python manage.py migrate
             docker-compose -f docker-compose.production.yml exec -T backend python manage.py collectstatic --noinput
 
+    - name: Send Telegram notification
+      uses: appleboy/telegram-action@v0.1.1
+      with:
+        to: ${{ secrets.TELEGRAM_CHAT_ID }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+           Kittygram deployed successfully!
+           Commit: ${{ github.sha }}
+           Branch: ${{ github.ref_name }}
+
