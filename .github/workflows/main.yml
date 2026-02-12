@@ -57,7 +57,7 @@ jobs:
           ALLOWED_HOSTS: "*"
         run: |
           cd backend
-          pytest || true
+          pytest 
 
       # ---------- FRONTEND: setup node ----------
       - name: Set up Node.js
