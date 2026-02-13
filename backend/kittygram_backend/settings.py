@@ -8,7 +8,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'unsafe-secret-key-for-dev')
 
 DEBUG = False
 
-ALLOWED_HOSTS = [ 'localhost', '127.0.0.1', '158.160.193.252' ]
+ALLOWED_HOSTS = [ 'taski2026.duckdns.org', 'kittygram2026.duckdns.org' ]
 
 CSRF_TRUSTED_ORIGINS = ['http://158.160.193.252']
 
