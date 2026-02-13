@@ -1,5 +1,5 @@
 repo_owner: AnnaHmelenko
-kittygram_domain: http://158.160.193.252:9001
-taski_domain: http://158.160.193.252/
+kittygram_domain: https://kittygram2026.duckdns.org
+taski_domain: http://taski2026.duckdns.org
 dockerhub_username: khmee
 
