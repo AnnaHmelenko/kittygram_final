@@ -1,16 +1,17 @@
 # flake8: noqa
 import os
 from pathlib import Path
+from django.core.management.utils import get_random_secret_key
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'unsafe-secret-key-for-dev')
+SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 
-DEBUG = False
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = [ 'taski2026.duckdns.org', 'kittygram2026.duckdns.org' ]
+ALLOWED_HOSTS = os.getenv( 'ALLOWED_HOSTS', 'taski2026.duckdns.org, kittygram2026.duckdns.org' ).split(',')
 
-CSRF_TRUSTED_ORIGINS = ['http://158.160.193.252']
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'http://158.160.193.252').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -97,7 +98,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASW_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
